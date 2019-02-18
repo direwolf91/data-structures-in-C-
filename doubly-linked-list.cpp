@@ -8,10 +8,10 @@ struct Node{
 };
 
 class DoublyLinkedList{
-    Node** head;
+    Node* head;
     public:
     DoublyLinkedList();
-    void insert(int val);
+    void insertStart(int val);
     void printList();
 };
 
@@ -19,31 +19,29 @@ DoublyLinkedList::DoublyLinkedList(){
     head = NULL;
 }
 
-void DoublyLinkedList::insert(int val){
+void DoublyLinkedList::insertStart(int val){
     Node* newNode = new Node;
     newNode->val = val;
+    newNode->next = head;
     newNode->previous = NULL;
-    newNode->next = NULL;
-    if (head == NULL){
-        head = &newNode;
-    } else {
-        newNode->next = *head;
-        (*head)->previous = newNode;
-        *head = newNode;
+    if (head != NULL){
+        head->previous = newNode;
     }
+    head = newNode;
 }
 
 void DoublyLinkedList::printList(){
-    Node** iterator = head;
-    while((*iterator)->next != NULL){
-        cout << (*iterator)->val;
-        *iterator = (*iterator)->next;
-    }
+  Node* temp = head;
+  while(temp != NULL){
+      cout << temp->val << " --> ";
+      temp = temp->next;
+  }
+  cout << "NULL \n";
 }
 
 int main(){
     DoublyLinkedList list;
-    list.insert(5);
-    list.insert(2);
+    list.insertStart(5);
+    list.insertStart(2);
     list.printList();
 }
