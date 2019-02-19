@@ -10,11 +10,11 @@ struct Node{
 class DoublyLinkedList{
     Node* head;
     public:
-    DoublyLinkedList();
-    void insertStart(int val);
-    void insertAfter(int val);
-    void insertMiddle(int position, int val);
-    void printList();
+        DoublyLinkedList();
+        void insertStart(int val);
+        void insertAfter(int val);
+        void insertMiddle(int position, int val);
+        void printList();
 };
 
 DoublyLinkedList::DoublyLinkedList(){
